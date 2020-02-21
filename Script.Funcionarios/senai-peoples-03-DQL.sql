@@ -6,3 +6,7 @@ UPDATE Funcionarios SET Nome = 'Saulo', Sobrenome = 'Santos' WHERE IdFuncionario
 
 ALTER TABLE Funcionarios 
 ADD DataNascimento DATE;
+
+
+SELECT * FROM Funcionarios
+WHERE Nome LIKE '%saulo'; 

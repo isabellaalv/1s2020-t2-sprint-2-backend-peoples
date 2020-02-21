@@ -97,6 +97,42 @@ namespace Senai.Peoples.WebApi.Repositories
                 }
 
             }
+
+        }
+       public List<FuncionarioDomain> BuscarPorNome(string Nome)
+
+        {
+            List<FuncionarioDomain> funcionarios = new List<FuncionarioDomain>();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string query = $"SELECT * FROM Funcionarios WHERE Nome LIKE '%{Nome}%'";
+
+                con.Open();
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand (query, con)){
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        FuncionarioDomain funcionario = new FuncionarioDomain
+                        {
+                            IdFuncionario = Convert.ToInt32(rdr[0])
+                            ,
+
+                            Nome = rdr["Nome"].ToString()
+
+                            ,
+
+                            Sobrenome = rdr["Sobrenome"].ToString()
+                        };
+                        funcionarios.Add(funcionario);
+                    }
+                }
+
+                return funcionarios;
+            }
         }
     }
 }

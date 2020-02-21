@@ -12,5 +12,6 @@ namespace Senai.Peoples.WebApi.Interfaces
         FuncionarioDomain Cadastrar(FuncionarioDomain Funcionario);
         FuncionarioDomain Atualizar(int IdFuncionario, FuncionarioDomain Funcionario);
         void Deletar(int IdFuncionario);
+        List<FuncionarioDomain> BuscarPorNome(string Nome);
     }
 }
