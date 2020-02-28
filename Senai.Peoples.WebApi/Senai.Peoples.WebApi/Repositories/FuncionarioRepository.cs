@@ -105,7 +105,7 @@ namespace Senai.Peoples.WebApi.Repositories
             List<FuncionarioDomain> funcionarios = new List<FuncionarioDomain>();
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                string query = $"SELECT * FROM Funcionarios WHERE Nome LIKE '%{Nome}%'";
+                string query = $"SELECT * FROM Funcionarios WHERE Nome LIKE '%{Nome}%' OR Sobrenome LIKE '%{Nome}%'";
 
                 con.Open();
 

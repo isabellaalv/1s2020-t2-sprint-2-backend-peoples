@@ -53,10 +53,11 @@ namespace Senai.Peoples.WebApi.Controllers
             return Ok();
         }
 
-        [HttpGet ("{Nome}")]
-        public IEnumerable<FuncionarioDomain> BuscarNome(string Nome)
+        [HttpGet("{Nome}")]
+        public IActionResult BuscarNome(string Nome)
         {
-            return _funcionarioRepository.BuscarPorNome(Nome);
+            var sobrenome =_funcionarioRepository.BuscarPorNome(Nome);
+            return Ok(sobrenome);
         }
     }
 }
